@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Research Scientist</title>
+    <title>Wei Nora Zhang</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
@@ -12,24 +12,26 @@
     <div class="layout">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1>Your Name</h1>
-                <p class="subtitle">Research Scientist</p>
+                <h1>Wei Nora Zhang</h1>
+                <p class="subtitle">PhD candidate in Neurobiology</p>
+                <p class="subtitle">MS candidate in CS</p>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
                     <li><a href="#cv"><i class="fas fa-file-alt"></i> CV</a></li>
                     <li><a href="#publications"><i class="fas fa-book"></i> Publications</a></li>
                     <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
                 <div class="social-links">
-                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://scholar.google.com/citations?user=yourid" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://scholar.google.com/citations?user=yourid" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="mailto:your.email@example.com" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </aside>
@@ -113,5 +115,34 @@
             </section>
         </main>
     </div>
+
+    <script>
+        // Add active class to current navigation item
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.sidebar nav a');
+            const sections = document.querySelectorAll('section');
+            
+            function setActiveLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - sectionHeight/3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink();
+        });
+    </script>
 </body>
 </html>
